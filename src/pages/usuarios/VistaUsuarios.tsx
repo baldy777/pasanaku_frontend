@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import "../App.css";
+import "../../App.css"
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";
 
