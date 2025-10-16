@@ -3,7 +3,7 @@ import Navbar, { SidebarItem } from "./components/Navbar";
 import "./App.css";
 import { Home, Users } from "lucide-react";
 
-import VistaUsuarios from "./pages/VistaUsuarios";
+import VistaUsuarios from "./pages/usuarios/VistaUsuarios";
 
 function App() {
   return (
