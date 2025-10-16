@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import "../App.css";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 Modal.setAppElement("#root");
 
@@ -92,12 +94,14 @@ const VistaUsuarios = () => {
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center md:text-left">
         Vista de Usuarios
       </h1>
-      <button
-        onClick={abrirAgregar}
-        className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Agregar Usuario
-      </button>
+      <div className="flex justify-end">
+        <button
+          onClick={abrirAgregar}
+          className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        >
+          Agregar Usuario
+        </button>
+      </div>
       <div className="mx-auto w-[96vw] max-w-[1800px] overflow-x-auto shadow-lg rounded-lg border border-gray-200">
         <table className="w-full divide-y divide-gray-200 bg-white">
           <thead className="bg-gray-50">
@@ -140,15 +144,20 @@ const VistaUsuarios = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <button
                     onClick={() => abrirEditar(u)}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-white px-2 py-1 rounded mr-2"
+                    className="text-yellow-500 hover:text-yellow-600 mr-3 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+                    aria-label="Editar usuario"
+                    style={{ background: "none", border: "none", padding: 0 }}
                   >
-                    Editar
+                    <FaEdit className="text-xl" />
                   </button>
+
                   <button
                     onClick={() => eliminarUsuario(u.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                    className="text-red-500 hover:text-red-600 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+                    aria-label="Eliminar usuario"
+                    style={{ background: "none", border: "none", padding: 0 }}
                   >
-                    Eliminar
+                    <RiDeleteBinFill className="text-xl" />
                   </button>
                 </td>
               </tr>
