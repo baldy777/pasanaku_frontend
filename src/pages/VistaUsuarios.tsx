@@ -7,7 +7,8 @@ Modal.setAppElement("#root");
 interface Usuario {
   id: number;
   nombre: string;
-  apellido: string;
+  apellido_paterno: string;
+  apellido_materno: string;
   telefono: string;
   aporte: string;
 }
@@ -17,14 +18,16 @@ const VistaUsuarios = () => {
     {
       id: 1,
       nombre: "Carlos",
-      apellido: "Pérez",
+      apellido_paterno: "Pérez",
+      apellido_materno: "Gómez",
       telefono: "123456789",
       aporte: "100",
     },
     {
       id: 2,
       nombre: "Ana",
-      apellido: "López",
+      apellido_paterno: "López",
+      apellido_materno: "López",
       telefono: "987654321",
       aporte: "150",
     },
@@ -49,7 +52,7 @@ const VistaUsuarios = () => {
     setEditarUsuario(usuario);
     setFormData({
       nombre: usuario.nombre,
-      apellido: usuario.apellido,
+      apellido: usuario.apellido_paterno + " " + usuario.apellido_materno,
       telefono: usuario.telefono,
       aporte: usuario.aporte,
     });
@@ -69,6 +72,8 @@ const VistaUsuarios = () => {
       const nuevo: Usuario = {
         id: usuarios.length > 0 ? usuarios[usuarios.length - 1].id + 1 : 1,
         ...formData,
+        apellido_paterno: "",
+        apellido_materno: "",
       };
       setUsuarios([...usuarios, nuevo]);
     }
@@ -83,7 +88,7 @@ const VistaUsuarios = () => {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="px-4 sm:px-6 lg:px-8 w-full">
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center md:text-left">
         Vista de Usuarios
       </h1>
@@ -93,15 +98,15 @@ const VistaUsuarios = () => {
       >
         Agregar Usuario
       </button>
-      <div className="overflow-x-auto shadow-lg rounded-lg border border-gray-200">
-        <table className="min-w-full divide-y divide-gray-200 bg-white">
+      <div className="mx-auto w-[96vw] max-w-[1800px] overflow-x-auto shadow-lg rounded-lg border border-gray-200">
+        <table className="w-full divide-y divide-gray-200 bg-white">
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Nombre
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Apellido
+                Apellidos
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Teléfono
@@ -124,7 +129,7 @@ const VistaUsuarios = () => {
                   {u.nombre}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {u.apellido}
+                  {u.apellido_paterno} {u.apellido_materno}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {u.telefono}
@@ -151,13 +156,13 @@ const VistaUsuarios = () => {
           </tbody>
         </table>
       </div>
-      /* modals */
+      /* models */
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Usuario Modal"
         className="bg-white rounded-lg max-w-md mx-auto mt-20 p-6 outline-none shadow-lg"
-        overlayClassName="fixed inset-0  bg-opacity-50 flex items-start justify-center"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center"
       >
         <h2 className="text-xl font-bold mb-4 text-black">
           {editarUsuario ? "Editar Usuario" : "Agregar Usuario"}
