@@ -15,13 +15,13 @@ interface SidebarProps {
 
 export default function Sidebar({ children }: SidebarProps) {
   const [expanded, setExpanded] = useState<boolean>(true);
-  
+
   // estado para manejar si la barra lateral está expandida o colapsada
   return (
-    <aside 
+    <aside
       className={`
         fixed left-0 top-0 h-screen z-50 bg-white border-r shadow-lg transition-all duration-300
-        ${expanded ? 'w-64' : 'w-16'}  
+        ${expanded ? "w-64" : "w-16"}  
       `}
     >
       <nav className="h-full flex flex-col">
@@ -46,11 +46,7 @@ export default function Sidebar({ children }: SidebarProps) {
         </SidebarContext.Provider>
 
         <div className="border-t flex p-3">
-          <img
-            src="#"
-            alt=""
-            className="w-10 h-10 rounded-md"
-          />
+          <img src="#" alt="" className="w-10 h-10 rounded-md" />
           <div
             className={`
               flex justify-between items-center
@@ -58,8 +54,8 @@ export default function Sidebar({ children }: SidebarProps) {
             `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">John Doe</h4>
-              <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+              <h4 className="font-semibold"></h4>
+              <span className="text-xs text-gray-600"></span>
             </div>
             <MoreVertical size={20} />
           </div>
