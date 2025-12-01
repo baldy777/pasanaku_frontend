@@ -49,14 +49,13 @@ Autenticación basada en API REST
 5. Estructura del proyecto
    /src
    ├── assets/  
-    │
    ├── components/  
-    │ ├── componentsUsuario/
+   ├── componentsUsuario/
    │ │ └── ModalUsuario.tsx
    │ └── Sidebar.tsx
    │
    ├── pages/  
-    │ ├── common/
+   │ ├── common/
    │ │ ├── homeDashboard.tsx
    │ │ └── LadingPage.tsx
    │ │
@@ -70,10 +69,10 @@ Autenticación basada en API REST
    │ └── VistaUsuarios.tsx
    │
    ├── App.tsx  
-    ├── main.tsx  
-    │
+   ├── main.tsx  
+   │
    ├── index.css  
-    │
+   │
    ├── vite.config.ts  
     └── tsconfig\*.json
 
