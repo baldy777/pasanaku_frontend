@@ -1,90 +1,83 @@
+# Pasanaku Web – Sistema de Gestión
 
-# arquitectura de proyect parte de frontend
+Sistema web para administrar grupos de pasanaku, donde varias personas realizan aportes periódicos y el monto reunido se entrega a un integrante según turno o sorteo, hasta completar la lista de fichas y finalizar el ciclo.
 
-# arquitectura monolitca
+1. Tecnologías utilizadas
 
-# librerias
+Frontend: React + TypeScript (Vite)
 
-+bycryptjs
+Backend: API REST (repositorio separado)
 
-# tecnologias utilizadas 
+Autenticación y roles: Login con distintos niveles de acceso
 
-+react
+2. Características principales
 
+Creación y administración de grupos de pasanaku
 
-#sujeta a cambios futuros
+Registro y gestión de participantes
 
-# React + TypeScript + Vite
+Configuración de fichas, turnos y aportes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Asignación del ganador por turno o sorteo
 
-Currently, two official plugins are available:
+Sistema de login con roles
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Listado y detalle de grupos
 
-## React Compiler
+Gestión de usuarios desde la vista administrativa
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+3. Instalación y ejecución
+   I. Clonar el repositorio
+   git clone https://tu-repositorio.git
+   cd PASANAKUFRONTEND
 
-## Expanding the ESLint configuration
+II. Instalar dependencias
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+III. Ejecutar la aplicación
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+La aplicación se ejecutará en un entorno de desarrollo local proporcionado por Vite.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+4. Roles y autenticación
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+El sistema incluye:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Pantalla de inicio de sesión
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Autenticación basada en API REST
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+5. Estructura del proyecto
+   /src
+   ├── assets/  
+    │
+   ├── components/  
+    │ ├── componentsUsuario/
+   │ │ └── ModalUsuario.tsx
+   │ └── Sidebar.tsx
+   │
+   ├── pages/  
+    │ ├── common/
+   │ │ ├── homeDashboard.tsx
+   │ │ └── LadingPage.tsx
+   │ │
+   │ ├── grupos/
+   │ │ ├── GrupoDetalle.tsx
+   │ │ └── MisPasanakus.tsx
+   │ │
+   │ └── usuarios/
+   │ ├── login.tsx
+   │ ├── RegistroUsuarios.tsx
+   │ └── VistaUsuarios.tsx
+   │
+   ├── App.tsx  
+    ├── main.tsx  
+    │
+   ├── index.css  
+    │
+   ├── vite.config.ts  
+    └── tsconfig\*.json
 
+Backend
+
+Este proyecto utiliza un backend separado basado en API REST.
