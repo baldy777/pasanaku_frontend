@@ -27,9 +27,8 @@ Listado y detalle de grupos
 Gestión de usuarios desde la vista administrativa
 
 3. Instalación y ejecución
-   I. Clonar el repositorio
-   git clone https://tu-repositorio.git
-   cd PASANAKUFRONTEND
+
+I. Clonar el repositorio git clone https://tu-repositorio.git cd PASANAKUFRONTEND
 
 II. Instalar dependencias
 npm install
