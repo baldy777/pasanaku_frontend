@@ -6,6 +6,8 @@ Sistema web para administrar grupos de pasanaku, donde varias personas realizan 
 
 el proyecto tanto el frontend como el balckend funcionan de manera local por ende tal sistema no esta subido a un servidor u dominio.
 
+Recordar iniciar el backend para aprovechar del frontend
+
 # Tecnologías utilizadas
 
 Frontend: React + TypeScript (Vite)
@@ -22,8 +24,6 @@ Autenticación y roles: Login con distintos niveles de acceso
 
 - Configuración de fichas, turnos y aportes
 
-- Asignación del ganador por turno o sorteo
-
 - Sistema de login con roles
 
 - Listado y detalle de grupos
@@ -32,21 +32,27 @@ Autenticación y roles: Login con distintos niveles de acceso
 
 # Instalación y ejecución
 
-I. Clonar el repositorio
+1. Clonar el repositorio
 
 git clone https://github.com/baldy777/pasanaku_frontend.git
 
-II. ingresar a la carpeta del repositorio
+2. ingresar a la carpeta del repositorio
 
 cd pasanaku_frontend
 
-III. Instalar dependencias
+3. Instalar dependencias
 
 npm install
 
-III. Ejecutar la aplicación
+4. Ejecutar la aplicación
 
-npm run dev
+npm run setup
+
+nota: encaso de clonar una version anterior, realizar el comando:
+
+git pull
+
+esto actualizara todo el sistema.
 
 La aplicación se ejecutará en un entorno de desarrollo local proporcionado por Vite.
 
