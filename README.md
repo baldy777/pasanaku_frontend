@@ -2,7 +2,11 @@
 
 Sistema web para administrar grupos de pasanaku, donde varias personas realizan aportes periódicos y el monto reunido se entrega a un integrante según turno o sorteo, hasta completar la lista de fichas y finalizar el ciclo.
 
-1. Tecnologías utilizadas
+# Nota
+
+el proyecto tanto el frontend como el balckend funcionan de manera local por ende tal sistema no esta subido a un servidor u dominio.
+
+# Tecnologías utilizadas
 
 Frontend: React + TypeScript (Vite)
 
@@ -10,71 +14,49 @@ Backend: API REST (repositorio separado)
 
 Autenticación y roles: Login con distintos niveles de acceso
 
-2. Características principales
+# Características principales
 
-Creación y administración de grupos de pasanaku
+- Creación y administración de grupos de pasanaku
 
-Registro y gestión de participantes
+- Registro y gestión de participantes
 
-Configuración de fichas, turnos y aportes
+- Configuración de fichas, turnos y aportes
 
-Asignación del ganador por turno o sorteo
+- Asignación del ganador por turno o sorteo
 
-Sistema de login con roles
+- Sistema de login con roles
 
-Listado y detalle de grupos
+- Listado y detalle de grupos
 
-Gestión de usuarios desde la vista administrativa
+- Gestión de usuarios desde la vista administrativa
 
-3. Instalación y ejecución
+# Instalación y ejecución
 
-I. Clonar el repositorio git clone https://tu-repositorio.git cd PASANAKUFRONTEND
+I. Clonar el repositorio
 
-II. Instalar dependencias
+git clone https://github.com/baldy777/pasanaku_frontend.git
+
+II. ingresar a la carpeta del repositorio
+
+cd pasanaku_frontend
+
+III. Instalar dependencias
+
 npm install
 
 III. Ejecutar la aplicación
+
 npm run dev
 
 La aplicación se ejecutará en un entorno de desarrollo local proporcionado por Vite.
 
-4. Roles y autenticación
+# Roles y autenticación
 
 El sistema incluye:
 
 Pantalla de inicio de sesión
 
 Autenticación basada en API REST
-
-5. Estructura del proyecto
-   /src
-   ├── assets/  
-   ├── components/  
-   ├── componentsUsuario/
-   │ │ └── ModalUsuario.tsx
-   │ └── Sidebar.tsx
-   │
-   ├── pages/  
-   │ ├── common/
-   │ │ ├── homeDashboard.tsx
-   │ │ └── LadingPage.tsx
-   │ │
-   │ ├── grupos/
-   │ │ ├── GrupoDetalle.tsx
-   │ │ └── MisPasanakus.tsx
-   │ │
-   │ └── usuarios/
-   │ ├── login.tsx
-   │ ├── RegistroUsuarios.tsx
-   │ └── VistaUsuarios.tsx
-   │
-   ├── App.tsx  
-   ├── main.tsx  
-   │
-   ├── index.css  
-   │
-   ├── vite.config.ts  
-    └── tsconfig\*.json
 
 Backend
 
