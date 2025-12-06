@@ -1,35 +1,47 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiMail, FiLock } from "react-icons/fi";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function InicioSesionUsuarios() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
-  const [error, setError] = useState("");
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-    const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-
-    const usuarioEncontrado = usuarios.find(
-      (user: { correo_electronico: string }) =>
-        user.correo_electronico === correo
-    );
-
-    if (!usuarioEncontrado) {
-      setError("Correo no registrado");
-      return;
-    }
-
-    if (usuarioEncontrado.contraseña !== contrasena) {
-      setError("Contraseña incorrecta");
-      return;
-    }
-
     setError("");
-    navigate("/inicio");
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          correo: correo,
+          contrasena: contrasena,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error al iniciar sesión");
+      }
+
+      login(data.token, data.usuario);
+
+      navigate("/app/inicio");
+    } catch (err: any) {
+      setError(err.message || "Error al conectar con el servidor");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -54,7 +66,6 @@ export default function InicioSesionUsuarios() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email */}
           <div
             className="flex items-center border-b-2 pb-2 transition-colors"
             style={{
@@ -82,12 +93,15 @@ export default function InicioSesionUsuarios() {
                 caretColor: "var(--color-primary)",
               }}
               value={correo}
-              onChange={(e) => setCorreo(e.target.value)}
+              onChange={(e) => {
+                setCorreo(e.target.value);
+                if (error) setError("");
+              }}
               required
+              disabled={loading}
             />
           </div>
 
-          {/* Contraseña */}
           <div
             className="flex items-center border-b-2 pb-2 transition-colors"
             style={{
@@ -115,43 +129,56 @@ export default function InicioSesionUsuarios() {
                 caretColor: "var(--color-primary)",
               }}
               value={contrasena}
-              onChange={(e) => setContrasena(e.target.value)}
+              onChange={(e) => {
+                setContrasena(e.target.value);
+                if (error) setError("");
+              }}
               required
+              disabled={loading}
             />
           </div>
 
-          {/* Error */}
           {error && (
-            <p
-              className="text-center font-medium"
-              style={{ color: "red" }}
+            <div
+              className="p-3 rounded-lg text-center font-semibold"
+              style={{
+                backgroundColor: "rgba(239, 68, 68, 0.1)",
+                color: "#ef4444",
+                border: "1px solid #ef4444",
+              }}
             >
               {error}
-            </p>
+            </div>
           )}
 
-          {/* Botón */}
           <div className="flex justify-center mt-6">
             <button
               type="submit"
-              className="w-full py-3 rounded-lg font-semibold shadow-md transition-colors"
+              disabled={loading}
+              className="w-full py-3 rounded-lg font-semibold shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                backgroundColor: "var(--color-primary)",
+                backgroundColor: loading
+                  ? "var(--color-muted)"
+                  : "var(--color-primary)",
                 color: "#fff",
               }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.backgroundColor =
-                  "var(--color-secondary)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.backgroundColor = "var(--color-primary)")
-              }
+              onMouseOver={(e) => {
+                if (!loading) {
+                  e.currentTarget.style.backgroundColor =
+                    "var(--color-secondary)";
+                }
+              }}
+              onMouseOut={(e) => {
+                if (!loading) {
+                  e.currentTarget.style.backgroundColor =
+                    "var(--color-primary)";
+                }
+              }}
             >
-              Entrar
+              {loading ? "Iniciando sesión..." : "Entrar"}
             </button>
           </div>
 
-          {/* Registro */}
           <div className="text-center mt-4">
             <p style={{ color: "var(--color-muted)" }}>
               ¿No tienes cuenta?{" "}
@@ -163,6 +190,7 @@ export default function InicioSesionUsuarios() {
                   color: "var(--color-primary)",
                   textDecoration: "underline",
                 }}
+                disabled={loading}
               >
                 Regístrate aquí
               </button>
