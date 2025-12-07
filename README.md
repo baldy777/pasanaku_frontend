@@ -34,11 +34,22 @@ Autenticación y roles: Login con distintos niveles de acceso
 
 1. Clonar el repositorio
 
+En caso de no tener git instalado valla al siguiente enlace para us instalacion
+-> https://git-scm.com/ luego ya puede clonarlo.
+
+Por recomendacion personal, abrir el proyecto en visual studio code, seguir el siguiente enlace para su instalacion -> https://code.visualstudio.com/
+
+con este comando lo puede llgar a clonar
+
 git clone https://github.com/baldy777/pasanaku_frontend.git
 
 2. ingresar a la carpeta del repositorio
 
 cd pasanaku_frontend
+
+este comando le permitira abrir el archivo con vs code
+
+code .
 
 3. Instalar dependencias
 
@@ -48,7 +59,7 @@ npm install
 
 npm run setup
 
-nota: encaso de clonar una version anterior, realizar el comando:
+## nota: encaso de clonar una version anterior, realizar el comando:
 
 git pull
 
