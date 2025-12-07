@@ -6,7 +6,9 @@ Sistema web para administrar grupos de pasanaku, donde varias personas realizan 
 
 el proyecto tanto el frontend como el balckend funcionan de manera local por ende tal sistema no esta subido a un servidor u dominio.
 
-Recordar iniciar el backend para aprovechar del frontend
+- Recordar iniciar el backend para aprovechar del frontend.
+
+- Recordatorio de que para realizar el sorteo el grupo debe de estar lleno, asi que para probarlo es mejor tener solo 2 miembros, administrador (encargado) y participante.
 
 # Tecnologías utilizadas
 
